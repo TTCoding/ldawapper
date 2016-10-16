@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     edu_lpai_ldawapper_LDAWapper
  * Method:    JNI_Train
- * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_edu_lpai_ldawapper_LDAWapper_JNI_1Train
-  (JNIEnv *, jclass, jstring, jstring, jstring, jstring, jstring, jstring);
+  (JNIEnv *, jclass, jstring, jstring, jstring, jstring, jstring, jstring, jstring);
 
 /*
  * Class:     edu_lpai_ldawapper_LDAWapper

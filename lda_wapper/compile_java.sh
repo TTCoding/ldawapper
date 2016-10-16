@@ -1,5 +1,6 @@
 #!/bin/sh
 # Define some constants
+JAR_PATH=/home/wangxiaobin/libs/*:.
 BIN_PATH=./bin/java
 SRC_PATH=./src/java
 
@@ -11,4 +12,4 @@ rm -rf $BIN_PATH
 mkdir -p $BIN_PATH
 
 # Compile the project
-javac -d $BIN_PATH  @$SRC_PATH/sources.list
+javac -d $BIN_PATH -cp $JAR_PATH @$SRC_PATH/sources.list

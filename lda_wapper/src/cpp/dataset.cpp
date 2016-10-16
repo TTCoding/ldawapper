@@ -141,9 +141,14 @@ int dataset::read_trndata(string dfile, string wordmapfile) {
     
     // set number of words to zero
     V = 0;
-    
+   	int doc_count = 0; 
     for (int i = 0; i < M; i++) {
-	fgets(buff, BUFF_SIZE_LONG - 1, fin);
+	char * retval = fgets(buff, BUFF_SIZE_LONG - 1, fin);
+	//因为在准备输入文件时，有些文件由于去停用词的原因成为空行，因此被排除，导致文件开始时写入的文档总数不对，需要修正。
+	if ( NULL == retval) {
+		M = doc_count;
+		break;
+	}
 	line = buff;
 	strtokenizer strtok(line, " \t\r\n");
 	int length = strtok.count_tokens();
@@ -157,6 +162,7 @@ int dataset::read_trndata(string dfile, string wordmapfile) {
 	
 	// allocate new document
 	document * pdoc = new document(length);
+	doc_count++;
 	
 	for (int j = 0; j < length; j++) {
 	    it = word2id.find(strtok.token(j));
@@ -311,9 +317,14 @@ int dataset::read_newdata_withrawstrs(string dfile, string wordmapfile) {
     
     // set number of words to zero
     V = 0;
-    
+   	int doc_count = 0; 
     for (int i = 0; i < M; i++) {
-	fgets(buff, BUFF_SIZE_LONG - 1, fin);
+	char * retval = fgets(buff, BUFF_SIZE_LONG - 1, fin);
+	//因为在准备输入文件时，有些文件由于去停用词的原因成为空行，因此被排除，导致文件开始时写入的文档总数不对，需要修正。
+	if ( NULL == retval) {
+		M = doc_count;
+		break;
+	}
 	line = buff;
 	strtokenizer strtok(line, " \t\r\n");
 	int length = strtok.count_tokens();
@@ -342,6 +353,7 @@ int dataset::read_newdata_withrawstrs(string dfile, string wordmapfile) {
 	}
 	
 	// allocate memory for new doc
+	doc_count++;
 	document * pdoc = new document(doc, line);
 	document * _pdoc = new document(_doc, line);
 	

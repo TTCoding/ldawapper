@@ -9,36 +9,40 @@ inline void GetCharsFromEnv(JNIEnv *env, jstring string, char* out) {
 }
 
 JNIEXPORT void JNICALL Java_edu_lpai_ldawapper_LDAWapper_JNI_1Train
-  (JNIEnv *env, jclass object, jstring dir, jstring model_name, jstring niters, jstring savestep, jstring twords, jstring input_file) {	  
+  (JNIEnv *env, jclass object, jstring dir, jstring alpha, jstring beta, jstring niters, jstring savestep, jstring twords, jstring input_file) {	  
 	char dir_cs[128], 
-		 model_name_cs[128],
+		 alpha_cs[32],
+		 beta_cs[32],
 		 niters_cs[16],
 		 savestep_cs[16],
 		 twords_cs[16],
 		 input_file_cs[128];
 	GetCharsFromEnv(env, dir, dir_cs);
-	GetCharsFromEnv(env, model_name, model_name_cs);
+	GetCharsFromEnv(env, alpha, alpha_cs);
+	GetCharsFromEnv(env, beta, beta_cs);
 	GetCharsFromEnv(env, niters, niters_cs);
 	GetCharsFromEnv(env, savestep, savestep_cs);
 	GetCharsFromEnv(env, twords, twords_cs);
 	GetCharsFromEnv(env, input_file, input_file_cs);
-	char* argv[13];
+	char* argv[15];
 	argv[0] = "-est";
 	argv[1] = "-dir";
 	argv[2] = dir_cs;
-	argv[3] = "-model";
-	argv[4] = model_name_cs;
-	argv[5] = "-niters";
-	argv[6] = niters_cs;
-	argv[7] = "-savestep";
-	argv[8] = savestep_cs;
-	argv[9] = "-twords";
-	argv[10] = twords_cs;
-	argv[11] = "-dfile";
-	argv[12] = input_file_cs;
+	argv[3] = "-alpha";
+	argv[4] = alpha_cs;
+	argv[5] = "-beta";
+	argv[6] = beta_cs;
+	argv[7] = "-niters";
+	argv[8] = niters_cs;
+	argv[9] = "-savestep";
+	argv[10] = savestep_cs;
+	argv[11] = "-twords";
+	argv[12] = twords_cs;
+	argv[13] = "-dfile";
+	argv[14] = input_file_cs;
 
 	model lda;
-	lda.init(13, argv);
+	lda.init(15, argv);
 	lda.estimate();
   }
 
