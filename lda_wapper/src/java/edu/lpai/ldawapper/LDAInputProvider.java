@@ -1,3 +1,6 @@
+/*
+ * author Xiaobin Wang
+ **/
 package edu.lpai.ldawapper;
 
 import java.io.File;
@@ -19,7 +22,10 @@ public class LDAInputProvider {
 				LDAInputPrepare(docDir,resultFp,docListFile);
 	}
 	
-	/**Prepare the input file for gibbslda +  + 
+	/**Prepare the input file for gibbslda++.
+	 * @param input_dir	The dir contains all the input files
+	 * @param lda_input_file  The input file for lda++
+	 * @param doc_id_map Map from doc name to id (line number)
 	 * @throws IOException
 	 * @throws ReflectiveOperationException
 	 */

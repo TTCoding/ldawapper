@@ -1,3 +1,6 @@
+/*
+ * author Xiaobin Wang
+ **/
 package edu.lpai.ldawapper;
 
 import gnu.trove.list.TDoubleList;
@@ -30,6 +33,7 @@ public class LDAModelFile {
 		phi = ReadDistributionFile(model_dir + File.separator + model_name + ".phi");
 	}
 	
+	/*Read the distribution file like theat, phi*/
 	private static TIntObjectMap<TDoubleList> ReadDistributionFile(String File_path) throws IOException {
 		TIntObjectMap<TDoubleList> retval = new TIntObjectHashMap<TDoubleList>();
 		BufferedReader br = new BufferedReader(new FileReader(File_path));
