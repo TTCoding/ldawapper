@@ -4,7 +4,7 @@ OBJS=		strtokenizer.o dataset.o utils.o model.o
 MAIN=		edu_lpai_ldawapper_LDAWapper
 
 all:	$(OBJS) $(MAIN).cpp
-	$(CC) -fPIC -shared -o $(target_dir)liblda.so -I /opt/java/jdk1.7.0_45/include/ -I /opt/java/jdk1.7.0_45/include/linux/ $(MAIN).cpp $(OBJS)
+	$(CC) -fPIC -shared -o liblda.so -I /opt/java/jdk1.7.0_45/include/ -I /opt/java/jdk1.7.0_45/include/linux/ $(MAIN).cpp $(OBJS)
 
 strtokenizer.o:	strtokenizer.h strtokenizer.cpp
 	$(CC) -fPIC -c -o strtokenizer.o strtokenizer.cpp
@@ -23,5 +23,4 @@ test:
 
 clean:
 	rm $(OBJS) 
-	rm $(MAIN)
 
