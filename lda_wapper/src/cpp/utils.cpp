@@ -58,8 +58,7 @@ int utils::parse_args(int argc, char ** argv, model * pmodel) {
 	    model_status = MODEL_STATUS_INF;
 	    
 	} else if (arg == "-dir") {
-	    dir = argv[++i];	    
-	    
+	    dir = argv[++i];
 	} else if (arg == "-dfile") {
 	    dfile = argv[++i];	    
 	    
@@ -129,8 +128,10 @@ int utils::parse_args(int argc, char ** argv, model * pmodel) {
 	    pmodel->twords = twords;
 	}
 	
+	pmodel->dir = dir;
 	pmodel->dfile = dfile;
 	
+	/*
 	string::size_type idx = dfile.find_last_of("/");			
 	if (idx == string::npos) {
 	    pmodel->dir = "./";
@@ -140,6 +141,7 @@ int utils::parse_args(int argc, char ** argv, model * pmodel) {
 	    printf("dir = %s\n", pmodel->dir.c_str());
 	    printf("dfile = %s\n", pmodel->dfile.c_str());
 	}
+	*/
     } 
     
     if (model_status == MODEL_STATUS_ESTC) {
